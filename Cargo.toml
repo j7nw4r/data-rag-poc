@@ -1,0 +1,27 @@
+[package]
+name = "data-rag-poc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.39.0", features = ["full"] }
+clap = { version = "4.4.18", features = ["derive"] }
+axum = { version = "0.8.1", features = ["macros"] }
+ollama-rs = { git = "https://github.com/j7nw4r/ollama-rs.git", branch = "master"}
+serde = { version = "1.0.217", features = ["derive"] }
+sqlx = { version = "0.8.2", features = ["runtime-tokio", "tls-rustls", "postgres"] }
+anyhow = { version = "1.0.95" }
+derive_builder = "0.20.2"
+log = "0.4.25"
+serde_json = "1.0.138"
+pgvector = { version = "0.4", features = ["sqlx"] }
+
+[dev-dependencies]
+anyhow = { version = "1.0.95" }
+tokio = { version = "1.43.0", features = ["test-util"] }
+axum-test = "17.2.0"
+serde_json = "1.0.137"
+testcontainers-modules = { version = "0.11.6", features = ["postgres"]}
+env_logger = "0.11.6"
+log = "0.4.25"
+random-string = "1.1.0"
