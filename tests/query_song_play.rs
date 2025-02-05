@@ -36,9 +36,10 @@ pub async fn query_song_play_test() {
     let response = server.get(SONG_PLAY_ENDPOINT).json(&song_play_request).await;
     assert_eq!(response.status_code(), StatusCode::OK);
     let resp = response.json::<SongPlayResponse>();
+    let query_answer = resp.names.iter().next().unwrap();
 
-    println!("stored song name: {:?}", song_name);
-    println!("queried song name: {:?}", resp.names.iter().next().unwrap());
+    println!("stored song name: {:?} | queried song name: {:?}", song_name, *query_answer);
+    assert_eq!(song_name, *query_answer, "query answer did not match");
 }
 
 async fn record_song_play(server: &TestServer, song_name: &str) {
